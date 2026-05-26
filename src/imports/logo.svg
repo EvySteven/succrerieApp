@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#FF6B9D" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+    <style><![CDATA[
+      .text { font-family: Pacifico, cursive; font-size: 72px; fill: url(#g); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.12)); }
+      .stroke { fill: none; stroke: #fff2; stroke-width: 2; }
+    ]]></style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(30,40)">
+    <text class="text">Bômbô</text>
+    <!-- simple lollipop to the right -->
+    <g transform="translate(260,10)">
+      <circle cx="30" cy="20" r="24" fill="url(#g)" />
+      <circle cx="30" cy="20" r="12" fill="#fff" opacity="0.18" />
+      <rect x="36" y="34" width="6" height="60" rx="3" transform="rotate(20 36 34)" fill="#fff" opacity="0.9" />
+    </g>
+  </g>
+</svg>
