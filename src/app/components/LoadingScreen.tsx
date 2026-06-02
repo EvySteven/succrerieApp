@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Candy, Lollipop, Cookie } from '../icons';
-import logo from '../../imports/logo.svg';
+import logo from '../../imports/Bombô.jpeg';
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -51,7 +51,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           <Cookie size={16} className="text-white" />
         </span>
       </div>
-      <img src={logo} alt="Bômbô" className="w-44 h-auto mb-2 object-contain" />
+      <img src={logo} alt="Bômbô" className="h-20 max-h-20 object-contain mt-1 rounded-lg" />
       <p className="text-white/80 text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
         Chargement des friandises...
       </p>

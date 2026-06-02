@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Manager from './Manager';
 import {
   LayoutDashboard,
   Package,
@@ -76,7 +77,7 @@ const LEVEL_COLORS = {
   'Chocolat': '#6B3A2A',
   'VIP': '#A855F7',
 };
-
+const waitingCount = 3; // remplacez par un fetch vers votre API si disponible
 export default function Admin({ navigate }: AdminProps) {
   const [activeSection, setActiveSection] = useState<AdminSection>('dashboard');
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -383,6 +384,7 @@ export default function Admin({ navigate }: AdminProps) {
       case 'dashboard': return <Dashboard />;
       case 'produits': return <ProductsSection />;
       case 'clients': return <ClientsSection />;
+      case 'chat': return <Manager navigate={navigate} />;
       default: return (
         <div className="text-center py-20">
           <Construction size={56} className="text-white/30 mb-4 mx-auto" />
@@ -430,7 +432,7 @@ export default function Admin({ navigate }: AdminProps) {
               {label}
               {key === 'chat' && (
                 <span className="ml-auto w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center font-bold">
-                  3
+                  {waitingCount}
                 </span>
               )}
             </button>

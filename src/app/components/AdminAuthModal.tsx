@@ -1,23 +1,22 @@
 import { useState } from 'react';
 import { Lock, X, AlertCircle, Loader } from 'lucide-react';
-import { useAdminAuth } from '../utils/useAdminAuth';
 
 interface AdminAuthModalProps {
   onClose: () => void;
   onSuccess?: () => void;
+  onSubmit: (password: string) => Promise<{ success: boolean; error?: string } | void>;
+  isLoading: boolean;
+  error?: string | null;
 }
 
-export default function AdminAuthModal({ onClose, onSuccess }: AdminAuthModalProps) {
+export default function AdminAuthModal({ onClose, onSuccess, onSubmit, isLoading, error }: AdminAuthModalProps) {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const { isLoading, error, login, clearError } = useAdminAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    clearError();
-
-    const result = await login(password);
-    if (result.success) {
+    const result = await onSubmit(password);
+    if (result && result.success) {
       setPassword('');
       onSuccess?.();
       onClose();
@@ -115,7 +114,9 @@ export default function AdminAuthModal({ onClose, onSuccess }: AdminAuthModalPro
               fontFamily: 'Baloo 2, cursive',
             }}
           >
-            {isLoading && <Loader size={18} className="animate-spin" />}
+            {isLoading && (
+              <span className="w-4 h-4 border-2 border-white/60 border-t-white rounded-full animate-spin inline-block" />
+            )}
             {isLoading ? 'Vérification...' : 'Accéder'}
           </button>
         </form>

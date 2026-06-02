@@ -1,6 +1,6 @@
-import { Instagram, Facebook, Twitter, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Facebook, Twitter, Youtube, /*tiktok,*/ Mail, Phone, MapPin } from 'lucide-react';
 import { Candy } from '../icons';
-import logo from '../../imports/logo.svg';
+import logo from '../../imports/Bombô.jpeg';
 import type { Page } from '../types';
 
 interface FooterProps {
@@ -19,10 +19,10 @@ export default function Footer({ navigate }: FooterProps) {
               <img src={logo} alt="Bômbô" className="w-40 h-auto object-contain" />
             </div>
             <p className="text-sm leading-relaxed opacity-70" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              Friandises artisanales faites avec passion, livrées avec amour depuis Paris.
+              Friandises artisanales faites avec passion, livrées avec amour depuis Ouaga
             </p>
             <div className="flex gap-3 mt-5">
-              {[Instagram, Facebook, Twitter, Youtube].map((Icon, i) => (
+              {[Instagram, Facebook, Twitter, Youtube, /*tiktok*/].map((Icon, i) => (
                 <button
                   key={i}
                   className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
@@ -129,7 +129,7 @@ export default function Footer({ navigate }: FooterProps) {
           className="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs opacity-50"
           style={{ borderColor: 'rgba(255,255,255,0.1)', fontFamily: 'Poppins, sans-serif' }}
         >
-          <span>© 2025 Bômbô — Tous droits réservés</span>
+          <span>© 2026 Bômbô — Tous droits réservés</span>
           <div className="flex gap-4">
             <button className="hover:opacity-100">Mentions légales</button>
             <button className="hover:opacity-100">CGV</button>

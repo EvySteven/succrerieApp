@@ -77,7 +77,7 @@ export default function About({ navigate }: AboutProps) {
             <Heart size={32} className="text-[#FFD93D] fill-[#FFD93D]" />
           </h1>
           <p className="text-white/85 text-lg" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            Bombo, c'est une histoire de passion, d'artisanat et de partage. Découvrez comment une cuisine parisienne est devenue votre boutique préférée.
+            Bombo, c'est une histoire de passion, d'artisanat et de partage. Découvrez comment une cuisine burkinabe est devenue votre boutique préférée.
           </p>
         </div>
         <div className="absolute bottom-0 left-0 right-0">

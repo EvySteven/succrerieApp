@@ -17,11 +17,18 @@ import Admin from './pages/Admin';
 import Manager from './pages/Manager';
 import { useAdminAuth } from './utils/useAdminAuth';
 
+const ADMIN_ACCESS_KEY = import.meta.env.VITE_ADMIN_ACCESS_KEY || 'bombo-secret-url';
 const FULL_LAYOUT_PAGES: Page[] = ['home', 'products', 'product-detail', 'cart', 'about', 'contact', 'profile'];
 
 export default function App() {
   const [loading, setLoading] = useState(true);
-  const { isAuthenticated: isAdminAuthenticated } = useAdminAuth();
+  const {
+    isAuthenticated: isAdminAuthenticated,
+    login,
+    error: adminError,
+    isLoading: isAdminLoading,
+    clearError,
+  } = useAdminAuth();
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [showAdminAuth, setShowAdminAuth] = useState(false);
   const [pendingAdminPage, setPendingAdminPage] = useState<'admin' | 'manager' | null>(null);
@@ -33,6 +40,18 @@ export default function App() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const accessKey = params.get('access_key');
+
+    if (accessKey && accessKey === ADMIN_ACCESS_KEY) {
+      setPendingAdminPage('admin');
+      setShowAdminAuth(true);
+      const url = window.location.pathname;
+      window.history.replaceState({}, '', url);
+    }
+  }, []);
 
   const navigate = useCallback((page: Page, options?: { profileSection?: ProfileSection }) => {
     // Require authentication for admin and manager pages
@@ -250,8 +269,18 @@ export default function App() {
       {/* Admin Authentication Modal */}
       {showAdminAuth && (
         <AdminAuthModal
+          onSubmit={async (password) => {
+            clearError();
+            const result = await login(password);
+            if (result.success) {
+              handleAdminAuthSuccess();
+            }
+            return result;
+          }}
           onSuccess={handleAdminAuthSuccess}
           onClose={() => { setShowAdminAuth(false); setPendingAdminPage(null); }}
+          isLoading={isAdminLoading}
+          error={adminError}
         />
       )}
 

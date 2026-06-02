@@ -314,6 +314,7 @@ Accès depuis **Admin → Chat**
 ### Pour les administrateurs
 
 #### 1. **Accéder à l'espace admin**
+   - lien d'acces à la page admin http://localhost:5173/?access_key=bombo-secret-url
    - Allez sur votre **Profil**
    - Cliquez sur **Espace Admin**
    - Entrez le mot de passe : `bombo-admin`

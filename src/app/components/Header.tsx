@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import logo from '../../imports/logo.svg';
+import logo from '../../imports/Bombô.jpeg';
 import { Search, Heart, ShoppingCart, User, Menu, X } from 'lucide-react';
 import type { Page } from '../types';
 import { Candy, Truck, Gift, Star, Package, Heart as HeartIcon, IconBox } from '../icons';
@@ -92,7 +92,7 @@ export default function Header({ currentPage, navigate, cartCount, wishlistCount
               className="flex items-center gap-2 text-2xl font-bold hover:opacity-80 transition-opacity"
               style={{ fontFamily: 'Pacifico, cursive', color: '#FF6B9D' }}
             >
-              <img src={logo} alt="Bômbô" className="h-10 max-h-10 object-contain mt-1" />
+              <img src={logo} alt="Bômbô" className="h-15 max-h-24 object-contain mt-1" />
             </button>
 
             <nav className="hidden md:flex items-center gap-1">

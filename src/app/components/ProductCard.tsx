@@ -136,6 +136,7 @@ export default function ProductCard({ product, onAddToCart, onToggleWishlist, is
             ref={btnRef}
             onClick={handleAddToCart}
             disabled={!product.inStock}
+            type="button"
             className={`flex items-center gap-1.5 px-3 py-2 rounded-2xl text-xs font-bold text-white transition-all duration-300 ${
               !product.inStock ? 'opacity-40 cursor-not-allowed' :
               added ? 'scale-105' : 'hover:scale-105 hover:shadow-md hover:shadow-pink-200'
@@ -148,12 +149,13 @@ export default function ProductCard({ product, onAddToCart, onToggleWishlist, is
           >
             {added ? (
               <>
-                <Check size={13} /> Ajouté !
+                <Check size={13} />
+                <span>Ajouté !</span>
               </>
             ) : (
               <>
                 <ShoppingCart size={13} />
-                Ajouter
+                <span>Ajouter</span>
               </>
             )}
           </button>
