@@ -57,6 +57,7 @@ Dans la page Admin, vous pouvez voir:
 **Frontend (`.env` ou `.env.local`):**
 ```env
 VITE_API_URL=http://localhost:3001/api
+VITE_ADMIN_ACCESS_KEY=bombo-secret-url
 ```
 
 **Backend (`server/.env`):**
@@ -67,6 +68,36 @@ ADMIN_PASSWORD=votre-mot-de-passe
 NODE_ENV=development
 CORS_ORIGIN=http://localhost:5173
 ```
+
+## 🚀 Déploiement
+
+### Frontend sur Vercel
+
+1. Poussez votre repo sur GitHub.
+2. Créez un projet Vercel et sélectionnez ce repo.
+3. Configurez :
+   - Build Command : `npm run build`
+   - Output Directory : `dist`
+4. Ajoutez les variables d'environnement Vercel :
+   - `VITE_API_URL=https://<votre-backend>/api`
+   - `VITE_ADMIN_ACCESS_KEY=ma-cle-secrete`
+5. Déployez.
+
+### Backend sur Railway
+
+1. Créez un nouveau service Node.js dans Railway en pointant sur le dossier `server/`.
+2. Ajoutez les variables d'environnement Railway :
+   - `PORT=3001`
+   - `JWT_SECRET=votre-cle-secrete`
+   - `ADMIN_PASSWORD=votre-mot-de-passe`
+   - `CORS_ORIGIN=https://<votre-frontend-vercel>`
+3. Lancez le service.
+4. Utilisez l'URL du service Railway comme valeur de `VITE_API_URL` dans Vercel.
+
+### Astuce
+
+- `VITE_` expose le paramètre au frontend, donc utilisez-le uniquement pour des URLs et des clés non sensibles.
+- Ne stockez jamais de `JWT_SECRET` ou `ADMIN_PASSWORD` en clair dans votre repo.
 
 ## 🛡️ Sécurité
 

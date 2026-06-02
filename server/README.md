@@ -172,6 +172,24 @@ Vérifier que le serveur fonctionne.
 
 Les requêtes dépassant les limites reçoivent une réponse 429 (Too Many Requests).
 
+## 🚀 Déploiement sur Railway
+
+Railway supporte ce dossier Express tel quel.
+
+1. Dans Railway, créez un nouveau projet et choisissez le dossier `server/`.
+2. Ajoutez les variables d'environnement :
+   - `PORT=3001`
+   - `JWT_SECRET=votre-clé-secrète`
+   - `ADMIN_PASSWORD=votre-mot-de-passe`
+   - `CORS_ORIGIN=https://<votre-frontend-vercel>`
+3. Railway utilisera `npm install` puis `npm start` automatiquement.
+4. Lorsque le service est en ligne, copiez l'URL publique et mettez-la dans `VITE_API_URL` côté frontend.
+
+### Vérification
+
+- `GET /api/health` doit répondre `{"status":"ok"}`.
+- `POST /api/auth/login` doit répondre à votre mot de passe admin.
+
 ### JWT Token
 
 - **Durée de validité**: 24 heures
