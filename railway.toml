@@ -1,6 +1,5 @@
 [build]
-builder = "nixpacks"
-workDir = "server"
+builder = "dockerfile"
 
 [deploy]
-startCommand = "cd server && npm start"
+startCommand = "npm start"
