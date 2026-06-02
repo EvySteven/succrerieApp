@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log
+Dockerfile
+railway.toml
+.vscode
+.idea
+.git
+.gitignore
+README.md
+package-lock.json
+pnpm-lock.yaml
+dist
+build
