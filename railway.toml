@@ -1,0 +1,6 @@
+[build]
+builder = "nixpacks"
+workDir = "server"
+
+[deploy]
+startCommand = "cd server && npm start"
